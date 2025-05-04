@@ -12,16 +12,22 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let choice = prompt("1 - Rock, 2 - Paper, 3 - Scissors; Make a choice: ");
-    choice = parseInt(choice);
+    let choice = prompt("Rock, Paper or Scissors; Please select your choice: ");
+    choice = choice.toLowerCase();
 
-    if(choice === 1) {
+    if(choice === "rock") {
         return "rock";
     }
-    else if(choice === 2) {
+    else if(choice === "paper") {
         return "paper";
     }
-    else if(choice === 3) {
+    else if(choice === "scissors") {
         return "scissors";
     }
+}
+
+let humanScore = 0, computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+
 }
