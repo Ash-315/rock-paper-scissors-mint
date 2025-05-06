@@ -82,6 +82,9 @@ function playGame() {
     
         playRound(humanSelection, computerSelection);
     }
+
+    alert("Computer Score: " + computerScore.toString() +
+            "\n Human Score: " + humanScore.toString());
 }
 
 playGame();
