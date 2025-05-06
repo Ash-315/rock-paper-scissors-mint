@@ -11,24 +11,6 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    let choice = prompt("Rock, Paper or Scissors; Please select your choice: ");
-    choice = choice.toLowerCase();
-
-    if(choice === "rock") {
-        return "rock";
-    }
-    else if(choice === "paper") {
-        return "paper";
-    }
-    else if(choice === "scissors") {
-        return "scissors";
-    }
-    else {
-        return "Invalid choice, please refresh the page to restart the game."
-    }
-}
-
 function playRound(humanChoice, computerChoice) {
     if(humanChoice === "rock") {
         if(computerChoice === "rock") {
@@ -39,7 +21,7 @@ function playRound(humanChoice, computerChoice) {
             computerScore++;
         }
         else if(computerChoice === "scissors") {
-            console.log("You win! Scissors beats Paper!");
+            console.log("You win! Rock beats Scissors!");
             humanScore++;
         }
     }
@@ -60,11 +42,11 @@ function playRound(humanChoice, computerChoice) {
 
     if(humanChoice === "scissors") {
         if(computerChoice === "rock") {
-            console.log("You lose! Rock beats Paper.");
+            console.log("You lose! Rock beats Scissors.");
             computerScore++;
         }
         else if(computerChoice === "paper") {
-            console.log("You win! Rock beats Scissors.");
+            console.log("You win! Scissors beats Papers.");
             humanScore++;
         }
         else if(computerChoice === "scissors") {
@@ -73,22 +55,28 @@ function playRound(humanChoice, computerChoice) {
     }
 }
 
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-    
-        playRound(humanSelection, computerSelection);
-    }
+function playGame(humanSelection) {
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
 
-    alert("Computer Score: " + computerScore.toString() +
-            "\n Human Score: " + humanScore.toString());
+    alert("Computer Score: " + computerScore.toString() + "\n Human Score: " + humanScore.toString());
 }
-
-playGame();
 
 let humanScore = 0, computerScore = 0;
 
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
+
+rock.addEventListener("click", () => {
+    playGame("rock");
+});
+
+paper.addEventListener("click", () => {
+    playGame("paper");
+});
+
+scissors.addEventListener("click", () => {
+    playGame("scissors");
+});
+
